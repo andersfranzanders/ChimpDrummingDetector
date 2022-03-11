@@ -5,6 +5,7 @@ import numpy as np
 
 def extract_spectrogram(signal):
 
+
     win_length_in_samples =  int(Hyperparams.SAMPLING_RATE * Hyperparams.WIN_LENGTH_MS * 0.001)
     hop_length_in_samples = int(win_length_in_samples * Hyperparams.STFT_WIN_OVERLAP_PERCENT)
 
@@ -16,6 +17,8 @@ def extract_spectrogram(signal):
 
     spec = np.log(np.maximum(spec, Hyperparams.SPEC_CLIP_VALUE))
     spec = np.transpose(spec)
+
+
     return spec
 
 def read_in_audio(path):
