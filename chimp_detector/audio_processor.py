@@ -14,12 +14,14 @@ def extract_spectrogram(signal):
                              center=True)
     spec = np.abs(spec)
     spec = lb.feature.melspectrogram(S=spec, sr=Hyperparams.SAMPLING_RATE, n_mels=Hyperparams.N_MELS,norm="slaney")
-
     spec = np.log(np.maximum(spec, Hyperparams.SPEC_CLIP_VALUE))
     spec = np.transpose(spec)
 
+    hopsize_between_frames_in_s = Hyperparams.WIN_LENGTH_MS * 0.001 * Hyperparams.STFT_WIN_OVERLAP_PERCENT
+    timepoints_of_fmap_frames_in_s = np.asarray([i * hopsize_between_frames_in_s for i in range(spec.shape[0])])
 
-    return spec
+
+    return spec, timepoints_of_fmap_frames_in_s
 
 def read_in_audio(path):
     y, sr = lb.load(path=path, sr=Hyperparams.SAMPLING_RATE, mono=True, duration=None)

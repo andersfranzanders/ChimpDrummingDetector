@@ -46,6 +46,9 @@ def seconds_to_length_in_frames(seconds):
 
 
 def segment_featuremap(m):
+
+    m = np.expand_dims(m, -1) if m.ndim == 1 else m
+
     segment_length_in_frames = seconds_to_length_in_frames(Hyperparams.FMAP_SEGMENTATION_SEG_LENGTH_IN_S)
 
 
@@ -70,5 +73,8 @@ def segment_featuremap(m):
 
         m_sub = m[:(amount_of_timeframes_in_map - frames_to_shave_off)]
         m_sub = np.reshape(m_sub, (-1, segment_length_in_frames, m.shape[-1]))
+
+        if frames_to_shave_off != 0:
+            m_sub = np.append(m_sub, np.expand_dims(m[last_possible_segment_starting_position:], axis=0),axis=0)
 
         return m_sub

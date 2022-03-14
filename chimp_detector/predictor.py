@@ -10,9 +10,13 @@ def predict_featuremap(featuremap):
     prdicitions_binary = predictions_probs > 0.5
     return predictions_probs,prdicitions_binary
 
-def produce_final_output_csv(predictions_probs,predictions_binary ):
-    hopsize_between_frames_in_s = Hyperparams.WIN_LENGTH_MS * 0.001 * Hyperparams.STFT_WIN_OVERLAP_PERCENT
-    timepoints_in_s = np.asarray([i * hopsize_between_frames_in_s for i in range(predictions_probs.shape[0])])
+def produce_final_output_csv(predictions_probs,predictions_binary,timepoints_of_fmap_frames_in_s ):
 
-    return  pd.DataFrame({"timepoint_in_seconds": timepoints_in_s, "drumming_probability": predictions_probs,
+    timepoints_of_fmap_frames_in_s = timepoints_of_fmap_frames_in_s.flatten()
+
+    df =  pd.DataFrame({"timepoint_in_seconds": timepoints_of_fmap_frames_in_s, "drumming_probability": predictions_probs,
                                    "drumming_binarized": predictions_binary})
+    df = df.drop_duplicates(subset="timepoint_in_seconds", ignore_index=True)
+    df["drumming_probability"] = df["drumming_probability"].astype(float).round(3)
+
+    return df
