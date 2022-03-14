@@ -22,5 +22,6 @@ class Hyperparams:
 
     FMAP_SEGMENTATION_SEG_LENGTH_IN_S = 10
 
-    PATH_TO_MODEL = "models/DATE:2022-01-28_15:51:39_CLASS:drumming_TestF1:0.379"
+    MODEL_FOLDER = "data"
+    MODEL_NAME = "DATE:2022-01-28_15:51:39_CLASS:drumming_TestF1:0.379"
 

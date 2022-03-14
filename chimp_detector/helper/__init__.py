@@ -1,8 +1,10 @@
+
 from chimp_detector.helper import audio_processor, featuremap_processor, predictor
 
-def detect_drumming(signal_path):
 
-   signal = audio_processor.read_in_audio(signal_path)
+def detect_chimpz(path):
+
+   signal = audio_processor.read_in_audio(path)
    featuremap, timepoints_of_fmap_frames_in_s = audio_processor.extract_spectrogram(signal)
    featuremap = featuremap_processor.denoise_featuremap(featuremap)
    featuremap = featuremap_processor.standartize_featuremap(featuremap)

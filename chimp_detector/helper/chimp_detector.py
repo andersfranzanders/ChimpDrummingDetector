@@ -1,4 +1,4 @@
-from chimp_detector import audio_processor, featuremap_processor, predictor
+from chimp_detector.helper import featuremap_processor, audio_processor, predictor
 
 
 def detect_chimpz(path):
@@ -11,6 +11,6 @@ def detect_chimpz(path):
    timepoints_of_fmap_frames_in_s = featuremap_processor.segment_featuremap(timepoints_of_fmap_frames_in_s)
    predictions_probs, predictions_binary = predictor.predict_featuremap(featuremap)
 
-   output_dataframe = predictor.produce_final_output_csv(predictions_probs,predictions_binary,timepoints_of_fmap_frames_in_s)
+   output_dataframe = predictor.produce_final_output_csv(predictions_probs, predictions_binary, timepoints_of_fmap_frames_in_s)
 
    return (output_dataframe)

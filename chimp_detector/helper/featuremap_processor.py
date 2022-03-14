@@ -1,4 +1,4 @@
-from chimp_detector.config import Hyperparams
+from chimp_detector.helper.config import Hyperparams
 
 import numpy as np
 
