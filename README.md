@@ -1,4 +1,4 @@
-# Chimp Detector
+# Chimpanzee Drumming Detector
 
 This is a python program for detecting chimpanzee drumming in long-term rainforest recordings.
 
