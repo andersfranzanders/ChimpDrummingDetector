@@ -45,3 +45,4 @@ This Packages requires:
 - librosa==0.8.0
 - tensorflow==2.3.1
 - pandas==1.1.2
+- numpy==1.18.5
