@@ -46,3 +46,17 @@ This Packages requires:
 - tensorflow==2.3.1
 - pandas==1.1.2
 - numpy==1.18.5
+
+## Citation
+
+Please cite this paper in your publication if you use this program for your research.
+    
+    @article{anders2021compensating,
+      title={Compensating class imbalance for acoustic chimpanzee detection with convolutional recurrent neural networks},
+      author={Anders, Franz and Kalan, Ammie K and K{\"u}hl, Hjalmar S and Fuchs, Mirco},
+      journal={Ecological Informatics},
+      volume={65},
+      pages={101423},
+      year={2021},
+      publisher={Elsevier}
+      }
